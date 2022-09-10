@@ -1,7 +1,9 @@
-package homeWorkSekondPart;
+package homeWorkSecondPartAdditional;
 
-import java.util.Locale;
 import java.util.Scanner;
+
+public class Task1 {
+
 //(2 балла) У Марата был взломан пароль. Он решил написать программу,
 //которая проверяет его пароль на сложность. В интернете он узнал, что пароль
 //должен отвечать следующим требованиям:
@@ -14,7 +16,7 @@ import java.util.Scanner;
 //Если пароль прошел проверку, то программа должна вывести в консоль строку пароль
 //надежный, иначе строку: пароль не прошел проверку
 
-public class Task12 {
+
     public static void main(String[] args) {
         int big = 0;
         int small = 0;
@@ -24,8 +26,8 @@ public class Task12 {
         Scanner scanner = new Scanner(System.in);
         String login = scanner.next();
         int s = login.length();
-      //  System.out.println(s);
-        if (s > 8) {
+        //  System.out.println(s);
+        if (s >= 8) {
             for (int i = 0; i < login.length() - 1; i++) { //перебираем буквы из строки в цикле от 0 до количества букв минус одну
                 char letter = login.substring(0, login.length()).charAt(i);// забираем из строки login буквы под номерами позиции i
                 //  System.out.println((int) letter);
@@ -46,7 +48,7 @@ public class Task12 {
             }
         }
         int total = big + small + sign + numeric;
-       // System.out.println("TOTAL" + total);
+        // System.out.println("TOTAL" + total);
         if (total == 4) {
             System.out.println("пароль надежный");
         } else {
@@ -56,4 +58,5 @@ public class Task12 {
     }
 
 }
+
 

@@ -7,9 +7,9 @@ public class Task8 {
         Scanner scanner = new Scanner(System.in);
         String a = scanner.nextLine();
         int i = a.indexOf(' ');
-        int newI = a.indexOf(' ', i+1);
+        int newI = a.lastIndexOf(' ');
         String firstPart = a.substring(0,newI);
-        String secondPart = a.substring(newI + 1);
+        String secondPart = a.substring(newI+1);
         System.out.println(firstPart);
         System.out.println(secondPart);
     }
