@@ -1,0 +1,45 @@
+package homeWorkDz2FirstPart;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Task2dop {
+    public static void main(String[] args) {
+
+        int[] ai;
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        if (N > 0 && N < 100) {
+            ai = new int[N];
+            for (int i = 0; i < ai.length; i++) {
+                int a = scanner.nextInt();
+                if (a > -1000 && a < 1000) {
+                    ai[i] = a;
+                }
+            }
+            int[] answer = sortSquares(N, ai);
+            for (int j = 0; j < answer.length; j++) {
+                System.out.print(answer[j] + " ");
+            }
+        }
+    }
+
+    public static int[] sortSquares(int N, int[] arr) {
+        int[] result = new int[N];
+        int i = 0;
+        int j = N - 1;
+        int k = N - 1;
+        while (i <= j) {
+            if (Math.abs(arr[i]) >= Math.abs(arr[j])) {
+                result[k] = arr[i] * arr[i];
+                i++;
+                k--;
+            } else {
+                result[k] = arr[j] * arr[j];
+                j--;
+                k--;
+            }
+        }
+        return result;
+    }
+}
