@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="commons-lang3-3.12">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../commons-lang3-3.12.0" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
