@@ -3,7 +3,7 @@ package dz3part2.task1;
 public class Book {
     private String[] title = new String[10];
     private String[] autor = new String[10];
-    private int numberOfBook;
+    static int numberOfBook;
     private int avaible = 0;
 
     public Book(String title, String autor) {
@@ -12,7 +12,7 @@ public class Book {
     }
 
     public void addBook(String newTitle, String newAutor) {
-        numberOfBook++;
+       numberOfBook++;
         if (!checkBook(newTitle)) {
             this.title[numberOfBook] = newTitle;
             this.autor[numberOfBook] = newAutor;
