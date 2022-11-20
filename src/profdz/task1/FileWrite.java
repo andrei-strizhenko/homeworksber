@@ -7,7 +7,7 @@ import java.io.Writer;
 
 public class FileWrite {
     private static final String PKG_DIR = "/Мария/Desktop/Homework/src/profdz/task1";
-    private static final String OUTPUT_FILE_NAME = "note.txt";
+    private static final String OUTPUT_FILE_NAME = "input.txt";
     public static void main(String[] args) throws MyCheckedException {
         try {
             writeFile();
