@@ -3,39 +3,28 @@ package profdz2.task4;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Document document = new Document();
-        Document d1 = new Document(0,"Регламент №1", 305);
-        Document d2 = new Document(1, "Регламент №2", 7);
-        Document d3 = new Document(2, "Регламент №3", 15);
-        Document d4 = new Document(3, "Регламент №4", 162);
+
         List<Document> doc = new ArrayList<>();
-        doc.add(d1);
-        doc.add(d2);
-        doc.add(d3);
-        doc.add(d4);
-
-     //   document.organizeDocuments(doc);
+        doc.add(new Document(1, "\"Регламент №8\"", 305));
+        doc.add(new Document(2, "\"Регламент №13\"", 7));
+        doc.add(new Document(3, "\"Регламент №5\"", 15));
+        doc.add(new Document(4, "\"Регламент №6\"", 162));
 
 
-       System.out.println("Enter the document Id: ");
-       Map<Integer, Document> ourMap = document.organizeDocuments(doc);
+        System.out.println("Enter the document Id: ");
+        Map<Integer, Document> ourMap = Document.organizeDocuments(doc);
 
+        Scanner scanner = new Scanner(System.in);
+        int chooseId = scanner.nextInt();
 
-      //  System.out.println(ourMap.entrySet());
-
-
-
-
-    //    Scanner scanner = new Scanner(System.in);
-    //    int chooseId = scanner.nextInt();
-
-
-
-       // Document chooseDoc = ;
-     //  System.out.println(ourMap.get(chooseId).getName());
-
+        ourMap.forEach((key, value) -> {
+            if (key == chooseId) {
+                System.out.print("Id " + key + ":  " + value.getName() + " страница " + value.getPageCount());
+            }
+        });
     }
 }

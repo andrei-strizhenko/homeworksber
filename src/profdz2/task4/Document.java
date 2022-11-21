@@ -9,9 +9,8 @@ public class Document {
     private String name;
     private int pageCount;
 
-    public Document(){}
 
-    public Document(int id, String name, int pageCount) {
+    public Document(Integer id, String name, Integer pageCount) {
         this.id = id;
         this.name = name;
         this.pageCount = pageCount;
@@ -29,10 +28,10 @@ public class Document {
         return id;
     }
 
-    public Map<Integer, Document> organizeDocuments(List<Document> documents) {
+    public static Map<Integer, Document> organizeDocuments(List<Document> documents) {
         Map<Integer, Document> map = new HashMap<>();
         for (Document document : documents) {
-            map.put(getId(), document);
+            map.put(document.getId(), document);
         }
         return map;
     }
