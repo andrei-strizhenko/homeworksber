@@ -21,7 +21,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int chooseId = scanner.nextInt();
 
-        ourMap.forEach((key, value) -> {
+        ourMap.forEach((key, value) -> {  // search by id
             if (key == chooseId) {
                 System.out.print("Id " + key + ":  " + value.getName() + " страница " + value.getPageCount());
             }
