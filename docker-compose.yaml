@@ -5,7 +5,7 @@ services:
     container_name: pgadminStrAnd
     image: postgres
     environment:
-      POSTGRES_DB: "db_converter_postgres"
+      POSTGRES_DB: "mylib"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "12345"
     ports:
