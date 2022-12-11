@@ -14,53 +14,73 @@ values ('Romashka', 25);
 
 create table clients
 (
-    id    serial primary key,
-    name  varchar(30),
-    phone bigint
+    id          serial primary key,
+    name_client varchar(30),
+    phone       bigint
 );
-insert into clients (name, phone)
+insert into clients (name_client, phone)
 values ('Andrey', 89159625425);
-insert into clients (name, phone)
+insert into clients (name_client, phone)
 values ('Oleg', 89159624232);
-insert into clients (name, phone)
+insert into clients (name_client, phone)
 values ('Mariia', 89159626335);
+insert into clients (name_client, phone)
+values ('Kira', 89159626300);
 
 create table orders
 (
     id        serial primary key,
-    num_order int,
-    name    varchar(30),
-    flower    varchar(30),
-    quantity  integer,
-    cost      bigint
+    flower_id integer REFERENCES flowers,
+    name_id   integer REFERENCES clients,
+    name      varchar(30) not null,
+    quantity  integer     not null CHECK (quantity > 1 and quantity < 1000),
+    total     integer     not null
 );
-insert into orders (num_order, name, flower, quantity, cost)
-values (1040, 'Andrey', 'Rose', 7, 700);
-insert into orders (num_order, name, flower, quantity, cost)
-values (1041, 'Oleg', 'Romashka', 11, 275);
-insert into orders (num_order, name, flower, quantity, cost)
-values (1042, 'Mariia', 'Rose', 5, 500);
-insert into orders (num_order, name, flower, quantity, cost)
-values (1043, 'Oleg', 'Liliya', 3, 150);
-insert into orders (num_order, name, flower, quantity, cost)
-values (1044, 'Kira', 'Liliya', 81, 4050);
+
+insert into orders (flower_id, name_id, name, quantity, total)
+values (1, 1, (select name_client from clients where id = 1), 7, (select price from flowers where id = 1) * 7);
+
+insert into orders (flower_id, name_id, name, quantity, total)
+values (3, 2, (select name_client from clients where id = 2), 11, (select price from flowers where id = 3) * 11);
+
+insert into orders (flower_id, name_id, name, quantity, total)
+values (1, 3, (select name_client from clients where id = 3), 5, (select price from flowers where id = 1) * 5);
+
+insert into orders (flower_id, name_id, name, quantity, total)
+values (2, 2, (select name_client from clients where id = 2), 3, (select price from flowers where id = 2) * 3);
+
+insert into orders (flower_id, name_id, name, quantity, total)
+values (2, 4, (select name_client from clients where id = 4), 81, (select price from flowers where id = 2) * 81);
+
 
 -- 1 запрос:
-select num_order, flower, quantity, cost, orders.name, phone
-from orders, clients
-where orders.name = clients.name and orders.name = (select name from orders where num_order = 1042);
+
+select *
+from orders o,
+     clients c,
+     flowers f
+where o.id = 2
+  and c.id = o.name_id
+  and f.id = o.flower_id;
 
 -- 2 запрос:
+
 select *
-from orders
-where name = (select name from clients where id = 2);
+from orders,
+     clients,
+     flowers
+where name = 'Mariia'
+  and clients.id = name_id
+  and flowers.id = flower_id;
 
 -- 3 запрос:
-select name, flower, quantity, cost
-from orders
-where cost =
-      (select max(cost) from orders);
+select o.name, f.title, o.quantity
+from orders o,
+     flowers f
+where quantity =
+      (select max(quantity) from orders)
+  and f.id = flower_id;
 
 -- 4 запрос:
-select sum(cost) as "Total cost"
+select sum(total) as "Total cost"
 from orders;
