@@ -5,7 +5,7 @@ services:
     container_name: pgadminStrAnd
     image: postgres
     environment:
-      POSTGRES_DB: "mylib"
+      POSTGRES_DB: "mylibfilm"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "12345"
     ports:
@@ -23,10 +23,10 @@ services:
           cpus: '1'
           memory: 4G
     networks:
-      - postgres
+      - postgresnew
 
   pgadmin:
-    container_name: pgadmin_container
+    container_name: pgadmin_container_new
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: "habrpguser@habr.com"
